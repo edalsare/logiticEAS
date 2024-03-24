@@ -26,6 +26,6 @@ public class People {
 	private String email;
 	
 	@OneToOne(mappedBy = "people", cascade = CascadeType.ALL)
-	private User user;
+	private Users users;
 
 }

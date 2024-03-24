@@ -31,4 +31,11 @@ public class Pier {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pier", cascade = CascadeType.ALL)
 	private List<Amount> amount;
 
+	public Pier(String nom_pier) {
+		super();
+		this.nom_pier = nom_pier;
+	}
+	
+	
+
 }

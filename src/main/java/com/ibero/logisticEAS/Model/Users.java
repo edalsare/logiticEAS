@@ -18,28 +18,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Users {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_user;
-	private String name;
+	private int id_users;
+	private String name_user;
 	private String password;
 	private String post;
+	
+	
 	@OneToOne
 	@JoinColumn(name = "id_people")
 	private People people;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.ALL)
 	private List<Bill> bill;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userp", cascade = CascadeType.ALL)
 	private List<Product> product;
-	
 
 }

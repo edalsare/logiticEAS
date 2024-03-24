@@ -17,5 +17,9 @@ public class categoryService {
 	public Category create_category(Category category) {
 		return cateRepo.save(category);
 	}
+	
+	public Category readByIdCategory(int id_category) {
+		return cateRepo.findById(id_category).get();
+	}
 
 }

@@ -44,7 +44,7 @@ public class Bill {
 			name = "bill_product", joinColumns = @JoinColumn(name = "id_bill", referencedColumnName = "id_bill"),
 			inverseJoinColumns = @JoinColumn(name = "id_product", referencedColumnName = "id_product")
 			)
-	private Product product;
+	private List<Product> product;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bill", cascade = CascadeType.ALL)
 	private List<Amount_in> amount_in;

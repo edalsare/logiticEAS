@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,11 +35,21 @@ public class Product {
 	@JoinColumn(name = "id_user")
 	private User userp;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_category")
+	private Category category;
+	
 	@ManyToMany(mappedBy = "product")
 	private List<Bill> bill;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product2", cascade = CascadeType.ALL)
 	private List<Amount_in> amount_in;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "producta", cascade = CascadeType.ALL)
+	private List<Amount> amount;
+	
+	@OneToOne(mappedBy = "productt", cascade = CascadeType.ALL)
+	private Trace trace;
 	
 
 }

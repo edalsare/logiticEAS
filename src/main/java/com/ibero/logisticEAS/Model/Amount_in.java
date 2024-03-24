@@ -33,6 +33,6 @@ public class Amount_in {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_product")
-	private Product product;
+	private Product product2;
 
 }

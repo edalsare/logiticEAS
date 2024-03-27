@@ -17,5 +17,9 @@ public class pierService {
 	public Pier create_pier(Pier pier) {
 		return pierRepo.save(pier);
 	}
+	
+	public Pier readPierById(int idPier) {
+		return pierRepo.findById(idPier).get();
+	}
 
 }

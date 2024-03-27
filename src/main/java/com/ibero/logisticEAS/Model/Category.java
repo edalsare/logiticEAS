@@ -33,6 +33,6 @@ public class Category {
 	private List<Product> product;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoryl", cascade = CascadeType.ALL)
-	private List<Location> location;
+	private List<Locations> location;
 
 }

@@ -20,12 +20,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Location {
+public class Locations {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_location;
-	private String asile;
+	private String aisle;
 	private String rack;
 	private String level;
 	private String place;
@@ -39,5 +39,18 @@ public class Location {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_category")
 	private Category categoryl;
+
+	public Locations(String aisle, String rack, String level, String place, String position, Boolean state, Category categoryl) {
+		super();
+		this.aisle = aisle;
+		this.rack = rack;
+		this.level = level;
+		this.place = place;
+		this.position = position;
+		this.state = state;
+		this.categoryl = categoryl;
+	}
+	
+	
 
 }

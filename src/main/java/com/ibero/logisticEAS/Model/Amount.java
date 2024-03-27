@@ -38,6 +38,6 @@ public class Amount {
 	private Pier pier;
 	
 	@OneToOne(mappedBy = "amount", cascade = CascadeType.ALL)
-	private Location location;
+	private Locations location;
 
 }

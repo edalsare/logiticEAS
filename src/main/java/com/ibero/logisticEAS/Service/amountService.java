@@ -21,8 +21,6 @@ public class amountService {
 	private pierService pierServ;
 	
 	public void create_bill(List<Integer>idProduct, int idPier, List<Amount> amounts) {
-		
-		
 		Pier pier = pierServ.readPierById(idPier);
 		for(int i=0; i<idProduct.size(); i++) {
 			Product product = prodServ.ReadProductById(idProduct.get(i));
@@ -32,6 +30,10 @@ public class amountService {
 			amountRepo.save(amount);
 		}
 		
+	}
+	
+	public Amount readAmountById(int idAmount) {
+		return amountRepo.findById(idAmount).get();
 	}
 
 }

@@ -1,16 +1,13 @@
-package com.ibero.logisticEAS.Repository;
+package com.ibero.logisticEAS.Service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.parsing.Location;
 import org.springframework.stereotype.Service;
 
-import com.ibero.logisticEAS.Model.Amount;
 import com.ibero.logisticEAS.Model.Category;
 import com.ibero.logisticEAS.Model.Locations;
-import com.ibero.logisticEAS.Service.amountService;
-import com.ibero.logisticEAS.Service.categoryService;
+import com.ibero.logisticEAS.Repository.locationRepository;
 
 import lombok.AllArgsConstructor;
 

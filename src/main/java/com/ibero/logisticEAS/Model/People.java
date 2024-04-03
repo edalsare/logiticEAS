@@ -1,5 +1,8 @@
 package com.ibero.logisticEAS.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -26,6 +29,7 @@ public class People {
 	private String email;
 	
 	@OneToOne(mappedBy = "people", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Users users;
 
 }

@@ -2,7 +2,12 @@ package com.ibero.logisticEAS.Model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +33,8 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_users;
-	private String name_user;
+	@Column(name="name_user")
+	private String nameuser;
 	private String password;
 	private String post;
 	
@@ -38,9 +44,11 @@ public class Users {
 	private People people;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Bill> bill;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userp", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Product> product;
 
 }

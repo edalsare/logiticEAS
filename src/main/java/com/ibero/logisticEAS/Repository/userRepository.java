@@ -7,5 +7,7 @@ import com.ibero.logisticEAS.Model.Users;
 
 @Repository
 public interface userRepository extends JpaRepository<Users, Integer>{
+	
+	Users findByNameuser( String names);
 
 }

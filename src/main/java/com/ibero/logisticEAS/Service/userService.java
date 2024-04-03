@@ -17,5 +17,10 @@ public class userService {
 	public Users ReadUserById(int id_user) {
 		return userRepo.findById(id_user).get();
 	}
+	
+	public Users ReadUserByName(String name_user) {
+		System.out.println(name_user);
+		return userRepo.findByNameuser(name_user);
+	}
 
 }

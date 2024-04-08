@@ -22,7 +22,7 @@ public class usersController {
 	@GetMapping("/names{name}")
 	public Users readUserByName(String name) {
 		System.out.println(name);
-		Users users = userServ.ReadUserByName(name);
+		Users users = userServ.ReadUserByName(name); 
 		return users;
 	}
 

@@ -1,5 +1,6 @@
 package com.ibero.logisticEAS.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -43,12 +44,15 @@ public class Product {
 	private List<Bill> bill;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product2", cascade = CascadeType.ALL)
+        @JsonIgnore
 	private List<Amount_in> amount_in;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "producta", cascade = CascadeType.ALL)
+        @JsonIgnore
 	private List<Amount> amount;
 	
 	@OneToOne(mappedBy = "productt", cascade = CascadeType.ALL)
+        @JsonIgnore
 	private Trace trace;
 	
 

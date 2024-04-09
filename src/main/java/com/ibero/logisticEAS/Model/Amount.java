@@ -1,5 +1,6 @@
 package com.ibero.logisticEAS.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -38,6 +39,7 @@ public class Amount {
 	private Pier pier;
 	
 	@OneToOne(mappedBy = "amount", cascade = CascadeType.ALL)
+        @JsonIgnore
 	private Locations location;
 
 }

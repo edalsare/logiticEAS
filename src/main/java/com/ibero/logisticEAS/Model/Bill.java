@@ -1,5 +1,6 @@
 package com.ibero.logisticEAS.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class Bill {
 	private List<Product> product;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bill", cascade = CascadeType.ALL)
+        @JsonIgnore
 	private List<Amount_in> amount_in;
 
 }

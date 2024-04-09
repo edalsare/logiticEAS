@@ -1,5 +1,6 @@
 package com.ibero.logisticEAS.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +36,7 @@ public class Packages {
 	private Trace trace;
 	
 	@OneToOne(mappedBy = "packages", cascade = CascadeType.ALL)
+        @JsonIgnore
 	private Proportion proportion;
 
 }

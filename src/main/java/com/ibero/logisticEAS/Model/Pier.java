@@ -1,5 +1,6 @@
 package com.ibero.logisticEAS.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -29,6 +30,7 @@ public class Pier {
 	private String nom_pier;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pier", cascade = CascadeType.ALL)
+        @JsonIgnore
 	private List<Amount> amount;
 
 	public Pier(String nom_pier) {

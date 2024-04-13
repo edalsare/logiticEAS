@@ -8,4 +8,5 @@ import com.ibero.logisticEAS.Model.Pier;
 @Repository
 public interface pierRepository extends JpaRepository<Pier, Integer>{
 
+    Pier findByNompier(String nompier);
 }

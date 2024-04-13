@@ -19,7 +19,6 @@ public class userService {
 	}
 	
 	public Users ReadUserByName(String name_user) {
-		System.out.println(name_user);
 		return userRepo.findByNameuser(name_user);
 	}
 

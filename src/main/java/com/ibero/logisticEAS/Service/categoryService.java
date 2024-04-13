@@ -21,5 +21,9 @@ public class categoryService {
 	public Category readByIdCategory(int id_category) {
 		return cateRepo.findById(id_category).get();
 	}
+        
+        public Category readByNameAndSub(String name, String Subname) {
+		return cateRepo.findByNamecatAndSubnamecat(name, Subname);
+	}
 
 }

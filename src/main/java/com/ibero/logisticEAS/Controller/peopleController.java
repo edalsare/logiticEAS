@@ -24,6 +24,7 @@ private peopleService peopleServ;
 	
 	@PostMapping("/save_people")
 	public  ResponseEntity<Object> peoples(@RequestBody objPeople peoples){
+            
 		People people = peoples.people;
 		Users usres = peoples.users;
 		peopleServ.create_people(people, usres);

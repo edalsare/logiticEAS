@@ -33,7 +33,7 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_users;
-	@Column(name="name_user")
+	@Column(name="name_user", unique = true)
 	private String nameuser;
 	private String password;
 	private String post;

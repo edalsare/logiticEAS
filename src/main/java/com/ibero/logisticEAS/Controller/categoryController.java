@@ -13,6 +13,8 @@ import com.ibero.logisticEAS.Model.Category;
 import com.ibero.logisticEAS.Service.categoryService;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("category")
@@ -26,6 +28,12 @@ public class categoryController {
 	public ResponseEntity<Object> save_category(@RequestBody Category category){
 		catServ.create_category(category);
 		return ResponseEntity.ok().body("Categorya creada correctamente");
+	}
+        
+        @GetMapping("/readname")
+	public Category readNameCategory(@RequestParam String name, @RequestParam String subname){
+		return catServ.readByNameAndSub(name, subname);
+		
 	}
 
 }

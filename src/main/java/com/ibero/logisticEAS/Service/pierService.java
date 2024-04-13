@@ -21,5 +21,9 @@ public class pierService {
 	public Pier readPierById(int idPier) {
 		return pierRepo.findById(idPier).get();
 	}
+        
+        public Pier readPierByName(String name) {
+		return pierRepo.findByNompier(name);
+	}
 
 }

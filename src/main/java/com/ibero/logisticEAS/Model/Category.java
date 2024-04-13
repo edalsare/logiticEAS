@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -27,8 +28,10 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_category;
-	private String name_cat;
-	private String sub_name_cat;
+        @Column(name = "name_cat")
+	private String namecat;
+        @Column(name = "sub_name_cat", unique = true)
+	private String subnamecat;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
         @JsonIgnore

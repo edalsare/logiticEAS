@@ -12,6 +12,8 @@ import com.ibero.logisticEAS.Model.Pier;
 import com.ibero.logisticEAS.Service.pierService;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("pier")
@@ -26,5 +28,10 @@ public class pierController {
 		pierServ.create_pier(pier);
 		return ResponseEntity.ok().body("Muelle ingresado correctamente");
 	}
+        
+        @GetMapping("readByName")
+        public Pier readByName(@RequestParam String name){
+            return pierServ.readPierByName(name);
+        }
 
 }

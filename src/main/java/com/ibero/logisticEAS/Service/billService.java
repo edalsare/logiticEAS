@@ -33,7 +33,6 @@ public class billService {
 		
 		for(int i=0; i<idProduct.size(); i++) {
 			Product pro = prodServ.ReadProductById(idProduct.get(i));
-                        System.out.println(pro.getDescription_pro());
 			Amount_in amount = amountIn.get(i);
 			amount.setProduct2(pro);
 			amount.setBill(bill);

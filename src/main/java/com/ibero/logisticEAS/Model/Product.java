@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -27,9 +28,12 @@ import lombok.Setter;
 public class Product {
 	
 	@Id
-	private long id_product;
-	private String name_product;
-	private String description_pro;
+        @Column(name = "id_product")
+	private long idproduct;
+        @Column(name = "name_product")
+	private String nameproduct;
+        @Column(name = "description_pro")
+	private String descriptionpro;
 	private String suplier;                
         
 	@ManyToOne()
@@ -55,6 +59,16 @@ public class Product {
 	@OneToOne(mappedBy = "productt", cascade = CascadeType.ALL)
         @JsonIgnore
 	private Trace trace;
+
+    public Product(long idproduct, String nameproduct, String suplier) {
+        this.idproduct = idproduct;
+        this.nameproduct = nameproduct;
+        this.suplier = suplier;
+    }
+
+    
+        
+        
 	
 
 }

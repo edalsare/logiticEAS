@@ -8,6 +8,7 @@ import com.ibero.logisticEAS.Model.Product;
 import com.ibero.logisticEAS.Model.Proportion;
 import com.ibero.logisticEAS.Model.Trace;
 import com.ibero.logisticEAS.Repository.traceRepository;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 
@@ -30,5 +31,9 @@ public class traceService {
 		return traceRepo.save(trace);
 		
 	}
+        
+        public List<Object> readProductByTrace(){
+            return traceRepo.findAllProductAndTrace();
+        }
 
 }

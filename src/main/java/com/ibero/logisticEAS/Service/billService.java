@@ -23,7 +23,7 @@ public class billService {
 	private productService prodServ;
 	private userService userServ;
 	
-	public Bill createBill(List<Integer> idProduct, int idUser, Bill bill, List<Amount_in> amountIn) {
+	public Bill createBill(List<Long> idProduct, int idUser, Bill bill, List<Amount_in> amountIn) {
 		
 		List<Product> products = new ArrayList<>();
 		List<Amount_in> amounts = new ArrayList<>();
@@ -33,6 +33,7 @@ public class billService {
 		
 		for(int i=0; i<idProduct.size(); i++) {
 			Product pro = prodServ.ReadProductById(idProduct.get(i));
+                        System.out.println(pro.getDescription_pro());
 			Amount_in amount = amountIn.get(i);
 			amount.setProduct2(pro);
 			amount.setBill(bill);

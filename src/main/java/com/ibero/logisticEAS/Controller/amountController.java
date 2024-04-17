@@ -33,7 +33,7 @@ public class amountController {
 }
 
 class objAmount{
-	public List<Integer> idProduct;
+	public List<Long> idProduct;
 	public int idPier;
 	public List<Amount> amounts; 
 	

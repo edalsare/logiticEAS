@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.ibero.logisticEAS.Model.Category;
 import com.ibero.logisticEAS.Repository.categoryRepositiry;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 
@@ -25,5 +26,13 @@ public class categoryService {
         public Category readByNameAndSub(String name, String Subname) {
 		return cateRepo.findByNamecatAndSubnamecat(name, Subname);
 	}
+        
+        public List<String> readAllDistincCategorys(){
+            return cateRepo.findDistinctNamecat();
+        }
+        
+        public List<Category> readByNamecat(String namecat){
+            return cateRepo.findByNamecat(namecat);
+        }
 
 }

@@ -34,7 +34,7 @@ public class traceController {
 }
 
 class objTrace{
-	public int idProduct;
+	public long idProduct;
 	public Trace trace;
 	public Packages packages;
 	public Proportion proportion;

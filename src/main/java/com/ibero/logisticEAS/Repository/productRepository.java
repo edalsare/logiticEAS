@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ibero.logisticEAS.Model.Product;
 
 @Repository
-public interface productRepository extends JpaRepository<Product, Integer>{
+public interface productRepository extends JpaRepository<Product, Long>{
 
 }

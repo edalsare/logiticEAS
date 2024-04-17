@@ -27,20 +27,21 @@ import lombok.Setter;
 public class Product {
 	
 	@Id
-	private int id_product;
+	private long id_product;
 	private String name_product;
 	private String description_pro;
-	private String suplier;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
+	private String suplier;                
+        
+	@ManyToOne()
 	@JoinColumn(name = "id_user")
-	private Users userp;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
+	private Users userp;                
+        
+	@ManyToOne()
 	@JoinColumn(name = "id_category")
 	private Category category;
 	
 	@ManyToMany(mappedBy = "product")
+        @JsonIgnore
 	private List<Bill> bill;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product2", cascade = CascadeType.ALL)

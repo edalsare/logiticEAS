@@ -1,6 +1,7 @@
 package com.ibero.logisticEAS.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -31,8 +32,9 @@ public class Category {
         @Column(name = "name_cat")
 	private String namecat;
         @Column(name = "sub_name_cat", unique = true)
-	private String subnamecat;
+	private String subnamecat;       
 	
+        
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
         @JsonIgnore
 	private List<Product> product;
@@ -41,4 +43,10 @@ public class Category {
         @JsonIgnore
 	private List<Locations> location;
 
+    public Category(String namecat, String subnamecat) {
+        this.namecat = namecat;
+        this.subnamecat = subnamecat;
+    }
+        
+        
 }

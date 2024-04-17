@@ -12,5 +12,9 @@ public interface categoryRepositiry extends JpaRepository<Category, Integer>{
     //@Query("SELECT ca FROM Category ca WHERE ca.namecat = ?1")
     Category findByNamecatAndSubnamecat(String names, String algo);
     
+    @Query("SELECT DISTINCT ca.namecat FROM Category ca")
+    List<String> findDistinctNamecat();
+    
+    List<Category> findByNamecat(String namecat); 
 
 }

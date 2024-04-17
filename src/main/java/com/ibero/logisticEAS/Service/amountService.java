@@ -20,7 +20,7 @@ public class amountService {
 	private productService prodServ;
 	private pierService pierServ;
 	
-	public void create_bill(List<Integer>idProduct, int idPier, List<Amount> amounts) {
+	public void create_bill(List<Long>idProduct, int idPier, List<Amount> amounts) {
 		Pier pier = pierServ.readPierById(idPier);
 		for(int i=0; i<idProduct.size(); i++) {
 			Product product = prodServ.ReadProductById(idProduct.get(i));

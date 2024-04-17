@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibero.logisticEAS.Model.Category;
 import com.ibero.logisticEAS.Service.categoryService;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,16 @@ public class categoryController {
 	public Category readNameCategory(@RequestParam String name, @RequestParam String subname){
 		return catServ.readByNameAndSub(name, subname);
 		
+	}
+        
+        @GetMapping("/readAll")
+	public List<String> readAllCategory(){
+		return catServ.readAllDistincCategorys();		
+	}
+        
+        @GetMapping("/readNamecat")
+	public List<Category> readAllCategory(@RequestParam String namecat){
+		return catServ.readByNamecat(namecat);
 	}
 
 }

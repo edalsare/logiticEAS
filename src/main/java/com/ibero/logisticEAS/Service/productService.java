@@ -13,29 +13,35 @@ import com.ibero.logisticEAS.Repository.productRepository;
 import lombok.AllArgsConstructor;
 
 @Service
-@AllArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor(onConstructor = @__(
+        @Autowired))
 public class productService {
-	
-	private productRepository productRepo;
-	private userService userServ;
-	private categoryService catServ;
-	
-	public void create_product(int idUser, int idCategory, List<Product> products) {
-		
-		Users users = userServ.ReadUserById(idUser);
-		Category category = catServ.readByIdCategory(idCategory);
-		
-		for(Product product: products) {
-			Product prod = product;
-			prod.setUserp(users);
-			prod.setCategory(category);
-			productRepo.save(prod);
-		}		
-		
-	}
-	
-	public Product ReadProductById(int idproduct) {
-		return productRepo.findById(idproduct).get();
-	}
+
+    private productRepository productRepo;
+    private userService userServ;
+    private categoryService catServ;
+
+    public void create_product(int idUser, List<Product> products) {
+
+        Users users = userServ.ReadUserById(idUser);
+
+        for (Product product : products) {
+            Category categorys = catServ.readByNameAndSub(product.getCategory().getNamecat(),
+                    product.getCategory().getSubnamecat());
+            Product prod = product;
+            prod.setUserp(users);
+            prod.setCategory(categorys);
+            productRepo.save(prod);
+        }
+
+    }
+
+    public Product ReadProductById(long idproduct) {
+        return productRepo.findById(idproduct).get();
+    }
+    
+    public Boolean ReadProductExist(long idProduct){
+        return productRepo.existsById(idProduct);
+    }
 
 }

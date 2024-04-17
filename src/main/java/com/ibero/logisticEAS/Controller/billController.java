@@ -27,7 +27,7 @@ public class billController {
 	@PostMapping("/create_bill")
 	public ResponseEntity<Object> create_bill(@RequestBody objBill objeto){
 		int idUser = objeto.idUser;
-		List<Integer>idProduct= objeto.idProduct;
+		List<Long>idProduct= objeto.idProduct;
 		Bill bill = objeto.bill;
 		List<Amount_in> amountIn = objeto.amountIn;
 		billserv.createBill(idProduct, idUser, bill, amountIn);
@@ -40,7 +40,7 @@ public class billController {
 
 class objBill{
 	public int idUser;
-	public List<Integer>idProduct;
+	public List<Long>idProduct;
 	public Bill bill;
 	public List<Amount_in> amountIn;
 }

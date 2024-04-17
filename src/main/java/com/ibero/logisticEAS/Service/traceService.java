@@ -18,7 +18,7 @@ public class traceService {
 	private productService productServ;
 	private traceRepository traceRepo;
 	
-	public Trace create_trace(int idProduct, Trace trace, Packages packages, Proportion proportion) {
+	public Trace create_trace(long idProduct, Trace trace, Packages packages, Proportion proportion) {
 		Product product = productServ.ReadProductById(idProduct);
 		
 		trace.setProductt(product);

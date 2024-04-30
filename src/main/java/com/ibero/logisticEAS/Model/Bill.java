@@ -1,10 +1,11 @@
-package com.ibero.logisticEAS.Model;
+ package com.ibero.logisticEAS.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -31,9 +32,12 @@ public class Bill {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_bill;
-	private String num_bill;
-	private LocalDate date_bill;
+        @Column(name = "id_bill")
+	private int idbill;
+        @Column(name = "num_bill")
+	private String numbill;
+        @Column(name = "date_bill")
+	private LocalDate datebill;
 	private String lagency;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

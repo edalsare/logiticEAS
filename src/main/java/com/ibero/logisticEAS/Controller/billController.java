@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibero.logisticEAS.Model.Amount_in;
 import com.ibero.logisticEAS.Model.Bill;
+import com.ibero.logisticEAS.Model.Product;
 import com.ibero.logisticEAS.Service.billService;
+import com.ibero.logisticEAS.Model.Users;
+import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;
 
@@ -23,14 +26,16 @@ import lombok.AllArgsConstructor;
 public class billController {
 	
 	private billService billserv;
-	
+	 
 	@PostMapping("/create_bill")
 	public ResponseEntity<Object> create_bill(@RequestBody objBill objeto){
-		int idUser = objeto.idUser;
-		List<Long>idProduct= objeto.idProduct;
+            
+		Users users = objeto.users;
+		//List<Long>idProduct= objeto.idProduct;
 		Bill bill = objeto.bill;
-		List<Amount_in> amountIn = objeto.amountIn;
-		billserv.createBill(idProduct, idUser, bill, amountIn);
+                //Bill bill = objeto.products;
+		//List<Amount_in> amountIn = objeto.amountIn;
+		billserv.createBill(objeto.products, users, bill);
 		return ResponseEntity.ok().body("Factura ingresada correctamente");
 		
 		
@@ -39,8 +44,9 @@ public class billController {
 }
 
 class objBill{
-	public int idUser;
-	public List<Long>idProduct;
+	public Users users;
+	//public List<Long>idProduct;
 	public Bill bill;
-	public List<Amount_in> amountIn;
+	//public List<Amount_in> amountIn;
+        public List<Object[]> products = new ArrayList<>();
 }

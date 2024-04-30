@@ -1,5 +1,6 @@
 package com.ibero.logisticEAS.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,12 +23,14 @@ public class Proportion {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_proportion")
 	 private int id_proportion;
 	 private int hight;
 	 private int width;
 	 private int lengthy;
 	 private int planch;
-	 private int num_planch;
+         @Column(name = "num_planch")
+	 private int numplanch;
 	 
 	 @OneToOne
 	 @JoinColumn(name = "id package")

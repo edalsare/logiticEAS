@@ -2,6 +2,7 @@ package com.ibero.logisticEAS.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,10 +25,11 @@ public class Packages {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_package;
+        @Column(name = "id_package")
+	private int idpackage;
 	private int unit;
 	private int blister;
-	private int  box;
+	private int box;
 	private int pallet;
 	private int piece;
 	

@@ -1,6 +1,7 @@
 package com.ibero.logisticEAS.Model;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +26,8 @@ public class Amount_in {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_amount_in;
-	private int cant_in;
+        @Column(name = "cant_in")
+	private int cantin;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_bill")

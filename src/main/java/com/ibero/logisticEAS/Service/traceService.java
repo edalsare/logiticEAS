@@ -28,7 +28,7 @@ public class traceService {
 		proportion.setPackages(packages);
 		trace.setPackages(packages);
 		
-		return traceRepo.save(trace);
+		return traceRepo.save(trace); 
 		
 	}
         

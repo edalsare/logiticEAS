@@ -1,5 +1,6 @@
 package com.ibero.logisticEAS.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,27 +24,32 @@ public class billService {
 	private productService prodServ;
 	private userService userServ;
 	
-	public Bill createBill(List<Long> idProduct, int idUser, Bill bill, List<Amount_in> amountIn) {
+	public Bill createBill(List<Object[]> productos, Users user, Bill bill) {
 		
 		List<Product> products = new ArrayList<>();
 		List<Amount_in> amounts = new ArrayList<>();
-		Users users = userServ.ReadUserById(idUser);
+		//Users users = userServ.ReadUserById(idUser);
 		LocalDate dat = LocalDate.now();
 		
 		
-		for(int i=0; i<idProduct.size(); i++) {
-			Product pro = prodServ.ReadProductById(idProduct.get(i));
-			Amount_in amount = amountIn.get(i);
-			amount.setProduct2(pro);
+		for(Object[] product: productos) {
+                    
+			//Product pro = prodServ.ReadProductById(idProduct.get(i));
+                        ObjectMapper mapper = new ObjectMapper();
+                        Product producto = new Product();
+                        producto = mapper.convertValue(product[0], Product.class);
+                        
+			Amount_in amount = mapper.convertValue(product[1], Amount_in.class);
+			amount.setProduct2(producto);
 			amount.setBill(bill);
 			amounts.add(amount);
-			products.add(pro);
+			products.add(producto);
 		}
 		
 		bill.setAmount_in(amounts);
 		bill.setProduct(products);
-		bill.setUsers(users);
-		bill.setDate_bill(dat);
+		bill.setUsers(user);
+		bill.setDatebill(dat);
 		
 		return billRepo.save(bill);
 		

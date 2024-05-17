@@ -17,42 +17,58 @@ import com.ibero.logisticEAS.Repository.billRepository;
 import lombok.AllArgsConstructor;
 
 @Service
-@AllArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor(onConstructor = @__(
+        @Autowired))
 public class billService {
-	
-	private billRepository billRepo;
-	private productService prodServ;
-	private userService userServ;
-	
-	public Bill createBill(List<Object[]> productos, Users user, Bill bill) {
+
+    private billRepository billRepo;
+    private productService prodServ;
+    private userService userServ;
+
+    public Bill createBill(List<Object[]> productos, Users user, Bill bill) { 
 		
-		List<Product> products = new ArrayList<>();
-		List<Amount_in> amounts = new ArrayList<>();
-		//Users users = userServ.ReadUserById(idUser);
-		LocalDate dat = LocalDate.now();
-		
-		
-		for(Object[] product: productos) {
-                    
-			//Product pro = prodServ.ReadProductById(idProduct.get(i));
-                        ObjectMapper mapper = new ObjectMapper();
-                        Product producto = new Product();
-                        producto = mapper.convertValue(product[0], Product.class);
-                        
-			Amount_in amount = mapper.convertValue(product[1], Amount_in.class);
-			amount.setProduct2(producto);
-			amount.setBill(bill);
-			amounts.add(amount);
-			products.add(producto);
-		}
-		
-		bill.setAmount_in(amounts);
-		bill.setProduct(products);
-		bill.setUsers(user);
-		bill.setDatebill(dat);
-		
-		return billRepo.save(bill);
-		
-	}
+        List<Product> products = new ArrayList<>();
+        List<Amount_in> amounts = new ArrayList<>();
+        //Users users = userServ.ReadUserById(idUser);
+        LocalDate dat = LocalDate.now();
+
+        for (Object[] product : productos) {
+            //Product pro = prodServ.ReadProductById(idProduct.get(i));
+            ObjectMapper mapper = new ObjectMapper();
+            Product producto = new Product();
+            producto = mapper.convertValue(product[0], Product.class);
+
+            Amount_in amount = mapper.convertValue(product[1], Amount_in.class);
+            amount.setProduct2(producto);
+            amount.setBill(bill);
+            amounts.add(amount);
+            products.add(producto);
+        }
+
+        bill.setAmount_in(amounts);
+        bill.setProduct(products);
+        bill.setUsers(user);
+        bill.setDatebill(dat);
+        return billRepo.save(bill);
+    }
+    
+    public Boolean existsByNumbill(String numbill){
+        return this.billRepo.existsByNumbill(numbill);
+    }
+    
+    public List<Bill> readByAll(){
+        return this.billRepo.findAll();
+    }
+     public List<String> readDistincLagency(){
+         return this.billRepo.findDistinctLagency();
+     }
+     
+     public List<String> readLagency(String lagency){
+         return this.billRepo.findLagency(lagency);
+     }
+     
+     public Bill readByNumbill(String numbill){
+         return this.billRepo.findByNumbill(numbill);
+     }
 
 }

@@ -1,6 +1,7 @@
 package com.ibero.logisticEAS.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,12 +30,14 @@ public class Amount_in {
         @Column(name = "cant_in")
 	private int cantin;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_bill")
+        @JsonBackReference
 	private Bill bill;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_product")
+        //@JsonBackReference
 	private Product product2;
 
 }

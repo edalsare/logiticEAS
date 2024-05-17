@@ -1,6 +1,7 @@
 package com.ibero.logisticEAS.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -50,6 +51,7 @@ public class Product {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product2", cascade = CascadeType.ALL)
         @JsonIgnore
+        //@JsonManagedReference
 	private List<Amount_in> amount_in;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "producta", cascade = CascadeType.ALL)

@@ -41,5 +41,9 @@ public class Amount {
 	@OneToOne(mappedBy = "amount", cascade = CascadeType.ALL)
         @JsonIgnore
 	private Locations location;
+        
+        @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_bill")
+	private Bill bill2;
 
 }

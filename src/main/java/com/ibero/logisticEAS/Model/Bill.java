@@ -1,6 +1,7 @@
  package com.ibero.logisticEAS.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -39,8 +40,9 @@ public class Bill {
         @Column(name = "date_bill")
 	private LocalDate datebill;
 	private String lagency;
+        private boolean actives;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user")
 	private Users users;
 	
@@ -51,8 +53,13 @@ public class Bill {
 			)
 	private List<Product> product;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bill", cascade = CascadeType.ALL)
-        @JsonIgnore
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "bill", cascade = CascadeType.ALL)
+        //@JsonIgnore
+        @JsonManagedReference
 	private List<Amount_in> amount_in;
+        
+        @OneToMany(fetch = FetchType.EAGER, mappedBy = "bill2", cascade = CascadeType.ALL)
+        @JsonIgnore
+	private List<Amount> amount;
 
 }
